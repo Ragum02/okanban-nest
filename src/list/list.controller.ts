@@ -1,22 +1,32 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { ListService } from './list.service';
 
-@Controller('list')
+@Controller('api/lists')
 export class ListController {
   constructor(private listService: ListService) {}
 
   @Get()
   async findAll() {
-    return this.listService.findAll();
+    return await this.listService.findAll();
   }
 
   @Get('/:id')
   async findOne(@Param() params: { id: number }) {
-    return this.listService.findOne(params);
+    return await this.listService.findOne(params.id);
   }
 
   @Post()
   async addList(@Body() body: object) {
-    return this.listService.addList(body);
+    return await this.listService.addList(body);
+  }
+
+  @Patch('/:id')
+  async updateList(@Body() body: object, @Param() params: { id: number}) {
+    return await this.listService.updateList(body, params.id);
+  }
+
+  @Delete('/:id')
+  async deleteList(@Param() params: { id: number }) {
+    return await this.listService.deleteList(params.id)
   }
 }
