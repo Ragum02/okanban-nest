@@ -1,7 +1,5 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Tag extends Model {
     /**
@@ -10,10 +8,16 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Tag.belongsToMany(models.Card, {
+        as: 'cards',
+        through: 'card_has_tag',
+        foreignKey: 'tag_id',
+        otherKey: 'card_id',
+      });
     }
   }
-  Tag.init({
+  Tag.init(
+    {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -26,17 +30,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      tableName: "tag",
-    });
-  
-    Tag.associate = (models) => {
-      Tag.belongsToMany(models.Card, {
-        as: "cards",
-        through: "card_has_tag",
-        foreignKey: "tag_id",
-        otherKey: "card_id"
-      });
-    };
-  
+      tableName: 'tag',
+    },
+  );
+
   return Tag;
 };

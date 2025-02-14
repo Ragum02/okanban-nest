@@ -1,7 +1,5 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class List extends Model {
     /**
@@ -10,38 +8,37 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      List.hasMany(models.Card, {
+        foreignKey: {
+          name: 'list_id',
+          allowNull: false,
+        },
+        as: 'cards',
+        onDelete: 'CASCADE',
+      });
     }
   }
-  List.init({
+
+  List.init(
+    {
       // Première propriété : titre de la liste
       title: {
-          type: DataTypes.STRING,
-          allowNull: false
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       // Deuxième propriété : la position de la liste
       position: {
-          type: DataTypes.INTEGER,
-          allowNull: false,
-          defaultValue: 1
-      }
-  },
-  
-  {
-      sequelize, 
-    tableName: 'list' 
-      
-    });
-    List.associate = (models) => {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 1,
+      },
+    },
 
-      List.hasMany(models.Card, {
-        foreignKey: {
-          name: "list_id",
-          allowNull: false
-        },
-        as: "cards",
-        onDelete: "CASCADE"
-      });
-    };
+    {
+      sequelize,
+      tableName: 'list',
+    },
+  );
+
   return List;
 };
