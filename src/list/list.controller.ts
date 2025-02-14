@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ListService } from './list.service';
 
 @Controller('list')
@@ -13,5 +13,10 @@ export class ListController {
   @Get('/:id')
   async findOne(@Param() params: { id: number }) {
     return this.listService.findOne(params);
+  }
+
+  @Post()
+  async addList(@Body() body: object) {
+    return this.listService.addList(body);
   }
 }

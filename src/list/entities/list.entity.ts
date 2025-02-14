@@ -1,19 +1,25 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
 export class List {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: false })
   title: string;
 
-  @Column()
+  @Column({ nullable: false, default: 1 })
   position: number;
 
-  @Column({ type: 'timestamp', nullable: false })
+  @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;
 
-  @Column({ type: 'timestamp', nullable: false })
+  @UpdateDateColumn({ type: 'timestamp' })
   updatedAt: Date;
 }

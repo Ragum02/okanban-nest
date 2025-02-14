@@ -14,7 +14,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       database: 'okanban',
       autoLoadEntities: true,
     }),
-    ListModule
+    ListModule,
   ],
   controllers: [AppController],
   providers: [AppService],

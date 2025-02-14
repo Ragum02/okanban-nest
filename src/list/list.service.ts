@@ -17,4 +17,9 @@ export class ListService {
   findOne(params: { id: number }): Promise<List[]> {
     return this.listRepository.findBy({ id: params.id });
   }
+
+  async addList(body: object): Promise<List> {
+    const list = this.listRepository.create(body);
+    return await this.listRepository.save(list);
+  }
 }
