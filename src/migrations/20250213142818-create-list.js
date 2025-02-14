@@ -18,13 +18,15 @@ export async function up(queryInterface, Sequelize) {
       defaultValue: 1
     },
     createdAt: {
+      type: Sequelize.DATE,
       allowNull: false,
-      type: Sequelize.DATE
+      defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
     },
     updatedAt: {
+      type: Sequelize.DATE,
       allowNull: false,
-      type: Sequelize.DATE
-    }
+      defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+    },
   });
 }
 export async function down(queryInterface, Sequelize) {
