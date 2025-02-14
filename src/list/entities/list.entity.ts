@@ -4,7 +4,9 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
+import { Card } from '../../card/entities/card.entity'
 
 @Entity()
 export class List {
@@ -22,4 +24,7 @@ export class List {
 
   @UpdateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
   updatedAt: Date;
+
+  @OneToMany(() => Card, (card) => card.list)
+  cards: Card[];
 }

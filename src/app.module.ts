@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ListModule } from './list/list.module';
+import { CardModule } from './card/card.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 @Module({
   imports: [
@@ -14,7 +15,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       database: 'okanban',
       autoLoadEntities: true,
     }),
-    ListModule,
+    ListModule,CardModule
   ],
   controllers: [AppController],
   providers: [AppService],
