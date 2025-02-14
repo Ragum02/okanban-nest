@@ -3,7 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ListModule } from './list/list.module';
 import { CardModule } from './card/card.module';
+import { TagModule } from './tag/tag.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -15,7 +17,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       database: 'okanban',
       autoLoadEntities: true,
     }),
-    ListModule,CardModule
+    ListModule,CardModule,TagModule
   ],
   controllers: [AppController],
   providers: [AppService],
