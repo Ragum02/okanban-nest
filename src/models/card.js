@@ -46,6 +46,7 @@ module.exports = (sequelize, DataTypes) => {
 
     {
       sequelize,
+      timestamps: true,
       tableName: 'card',
     },
   );
