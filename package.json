@@ -10,7 +10,7 @@
     "dev": "node --watch index.js",
     "db:migrate": "npx sequelize-cli db:migrate",
     "db:seed": "npx sequelize-cli db:seed:all",
-    "db": "npm run db:migrate && npm run db:seed"
+    "db": "npx sequelize-cli db:migrate:undo:all && npm run db:migrate && npm run db:seed"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
