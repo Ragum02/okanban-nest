@@ -6,7 +6,7 @@ export async function up(queryInterface, Sequelize) {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
     },
     content: {
       type: Sequelize.TEXT,
@@ -23,16 +23,16 @@ export async function up(queryInterface, Sequelize) {
     },
     list_id: {
       type: Sequelize.INTEGER,
-      allowNull: false
+      allowNull: false,
     },
     createdAt: {
       allowNull: false,
-      type: Sequelize.DATE
+      type: Sequelize.DATE,
     },
     updatedAt: {
       allowNull: false,
-      type: Sequelize.DATE
-    }
+      type: Sequelize.DATE,
+    },
   });
 }
 export async function down(queryInterface, Sequelize) {

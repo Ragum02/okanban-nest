@@ -6,25 +6,25 @@ export async function up(queryInterface, Sequelize) {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
     },
     title: {
       type: Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
     },
     position: {
       type: Sequelize.INTEGER,
       allowNull: false,
-      defaultValue: 1
+      defaultValue: 1,
     },
     createdAt: {
       allowNull: false,
-      type: Sequelize.DATE
+      type: Sequelize.DATE,
     },
     updatedAt: {
       allowNull: false,
-      type: Sequelize.DATE
-    }
+      type: Sequelize.DATE,
+    },
   });
 }
 export async function down(queryInterface, Sequelize) {
