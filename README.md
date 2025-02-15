@@ -13,3 +13,4 @@ $ npm run start:dev
 - **Méthode pour afficher une liste et ses cartes associées**
 - **Méthode pour afficher une seule carte avec sa liste associée**
 - **Méthode pour afficher un tag et ses cartes associées**
+- **Optimiser & ameliorer le code car je suis sûr que c'est bancale :D**
