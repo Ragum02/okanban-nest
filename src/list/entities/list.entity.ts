@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
   OneToMany,
 } from 'typeorm';
-import { Card } from '../../card/entities/card.entity'
+import { Card } from '../../card/entities/card.entity';
 
 @Entity()
 export class List {

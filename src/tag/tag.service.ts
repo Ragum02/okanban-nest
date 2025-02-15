@@ -8,7 +8,7 @@ export class TagService {
   constructor(
     @InjectRepository(Tag)
     private tagRepository: Repository<Tag>,
-  ) { }
+  ) {}
 
   findAll(): Promise<Tag[]> {
     return this.tagRepository.find();

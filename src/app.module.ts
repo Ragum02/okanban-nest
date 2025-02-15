@@ -6,9 +6,12 @@ import { CardModule } from './card/card.module';
 import { TagModule } from './tag/tag.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+// TODO - Implanté Dotenv integrés a NEST
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
+      //On lui déclare qu'il va utilisé TypeOrm
       type: 'postgres',
       host: 'localhost',
       port: 5432,
@@ -17,7 +20,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       database: 'okanban',
       autoLoadEntities: true,
     }),
-    ListModule,CardModule,TagModule
+    ListModule,
+    CardModule,
+    TagModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -8,7 +8,7 @@ export class ListService {
   constructor(
     @InjectRepository(List)
     private listRepository: Repository<List>,
-  ) { }
+  ) {}
 
   findAll(): Promise<List[]> {
     return this.listRepository.find();
