@@ -37,4 +37,9 @@ export class TagController {
   async deleteTag(@Param() params: { id: number }) {
     return await this.tagService.deleteTag(params.id);
   }
+
+  @Get('/:id/cards')
+  async findOneAndCards(@Param() params: { id: number }) {
+    return await this.tagService.findOneAndCards(params.id);
+  }
 }

@@ -17,8 +17,11 @@ export class CardService {
     return this.cardRepository.find(options);
   }
 
-  findOne(id: number): Promise<Card[]> {
-    return this.cardRepository.findBy({ id: id });
+  findOne(id: number): Promise<Card | null> {
+    return this.cardRepository.findOne({
+      where: { id: id },
+      relations: ['tags'],
+    });
   }
 
   async addCard(body: object): Promise<Card> {
@@ -77,6 +80,13 @@ export class CardService {
     return this.cardRepository.findOne({
       where: { id: card_id },
       relations: ['tags'],
+    });
+  }
+
+  async findOneAndList(id: number): Promise<Card | null> {
+    return this.cardRepository.findOne({
+      where: { id },
+      relations: ['list'],
     });
   }
 }

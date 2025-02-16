@@ -55,4 +55,9 @@ export class CardController {
       params.tag_id,
     );
   }
+
+  @Get('/:id/list')
+  async findOneAndList(@Param() params: { id: number }) {
+    return await this.cardService.findOneAndList(params.id);
+  }
 }

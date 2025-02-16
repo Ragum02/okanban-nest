@@ -2,12 +2,15 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Tag } from './entities/tag.entity';
+import { Card } from '../card/entities/card.entity';
 
 @Injectable()
 export class TagService {
   constructor(
     @InjectRepository(Tag)
     private tagRepository: Repository<Tag>,
+    @InjectRepository(Card)
+    private cardRepository: Repository<Card>,
   ) {}
 
   findAll(): Promise<Tag[]> {
@@ -31,5 +34,12 @@ export class TagService {
   async deleteTag(id: number) {
     await this.tagRepository.delete(id);
     console.log('Supprimer');
+  }
+
+  findOneAndCards(id: number) {
+    return this.tagRepository.findOne({
+      where: { id: id },
+      relations: ['cards'],
+    });
   }
 }

@@ -37,4 +37,9 @@ export class ListController {
   async deleteList(@Param() params: { id: number }) {
     return await this.listService.deleteList(params.id);
   }
+
+  @Get('/:id/cards')
+  async findOneAndCard(@Param() params: { id: number }) {
+    return await this.listService.findOneAndCard(params.id);
+  }
 }

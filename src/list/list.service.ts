@@ -32,4 +32,11 @@ export class ListService {
     await this.listRepository.delete(id);
     console.log('Supprimer');
   }
+
+  async findOneAndCard(id: number): Promise<List | null> {
+    return this.listRepository.findOne({
+      where: { id },
+      relations: ['cards'],
+    });
+  }
 }
